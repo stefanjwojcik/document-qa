@@ -3,6 +3,15 @@ from openai import OpenAI
 
 # Show title and description.
 st.title("📄 Document question answering")
+
+if not st.experimental_user.is_logged_in:
+    if st.button("Log in"):
+        st.login()
+else:
+    if st.button("Log out"):
+        st.logout()
+    st.write(f"Hello, {st.experimental_user.name}!")
+
 st.write(
     "Upload a document below and ask a question about it – GPT will answer! "
     "To use this app, you need to provide an OpenAI API key, which you can get [here](https://platform.openai.com/account/api-keys). "
